@@ -259,6 +259,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/17/applications-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cameron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amazing Erlang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/17/applications-md/" itemprop="url">深度分析Erlang的application</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T14:05:12+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Erlang基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Erlang基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>大家都知道Erlang是由基本的数据类型、函数、模块和supervisor树构成，引入application主要是为了不同的应用处理特定的功能，遵循模块化和组件的原则。一个复杂的Erlang项目都是由许多个不同功能的application组成的。今天我们来分析Erlang的application。</p>
+<h3 id="启动一个application"><a href="#启动一个application" class="headerlink" title="启动一个application"></a>启动一个application</h3><p>根据Erlang的<a href="https://erlang.org/docs/" target="_blank" rel="external"><font color="blue">官方文档</font></a>我们创建一个ch_app，app下面由ch_sup_sup作为顶层的supervisor。<br>第二层是ch_sup,ch_sup的下面启动两个ch_worker<br><figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%% src/ch_app.erl</span></div><div class="line"><span class="comment">%% 懒人一个模块处理所有的功能</span></div><div class="line"><span class="comment">%% 按照标准的opt规范还是要分开多个模块比较好</span></div><div class="line"><span class="keyword">-module</span><span class="params">(ch_app)</span>.</div><div class="line"><span class="keyword">-behaviour</span><span class="params">(application)</span>.</div><div class="line"><span class="keyword">-behaviour</span><span class="params">(supervisor)</span>.</div><div class="line"></div><div class="line"><span class="keyword">-export</span><span class="params">([start_link/<span class="number">2</span>])</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([init/<span class="number">1</span>])</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([new_process/<span class="number">0</span>])</span>.</div><div class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">2</span>, stop/<span class="number">1</span>])</span>.</div><div class="line"></div><div class="line"><span class="function"><span class="title">start</span><span class="params">(_Type, _Args)</span> -&gt;</span></div><div class="line">    ch_app:start_link(ch_sup_sup, master).</div><div class="line"></div><div class="line"><span class="function"><span class="title">stop</span><span class="params">(_State)</span> -&gt;</span></div><div class="line">    ok.</div><div class="line"><span class="function"><span class="title">start_link</span><span class="params">(Sup, Type)</span> -&gt;</span></div><div class="line">    &#123;ok, ChSup&#125; = supervisor:start_link(&#123;local, Sup&#125;, ?MODULE, [Type]),</div><div class="line">   [supervisor:start_child(ChSup, []) || _&lt;- [<span class="number">1</span>,<span class="number">2</span>]],</div><div class="line">   &#123;ok, ChSup&#125;.</div><div class="line"></div><div class="line"><span class="function"><span class="title">init</span><span class="params">([master])</span> -&gt;</span></div><div class="line">  SupFlags = #&#123;strategy =&gt; one_for_one, intensity =&gt; <span class="number">1</span>, period =&gt; <span class="number">10</span>&#125;,</div><div class="line">    ChildSpecs = [#&#123;id =&gt; ch3,</div><div class="line">                    start =&gt; &#123;ch_app, start_link, [ch_sup, child]&#125;,</div><div class="line">                    restart =&gt; permanent,</div><div class="line">                    shutdown =&gt; brutal_kill,</div><div class="line">                    type =&gt; supervisor,</div><div class="line">                    modules =&gt; [ch_app]&#125;],</div><div class="line">    &#123;ok, &#123;SupFlags, ChildSpecs&#125;&#125;;</div><div class="line">  init(_Args) -&gt;</div><div class="line">    SupFlags = #&#123;strategy =&gt; simple_one_for_one, intensity =&gt; <span class="number">0</span>, period =&gt; <span class="number">5</span>&#125;,</div><div class="line">    ChildSpecs = [#&#123;id =&gt; ch3,</div><div class="line">                    start =&gt; &#123;ch_app, new_process, []&#125;,</div><div class="line">                    restart =&gt; permanent,</div><div class="line">                    shutdown =&gt; brutal_kill,</div><div class="line">                    type =&gt; worker,</div><div class="line">                    modules =&gt; [ch_app]&#125;],</div><div class="line">    &#123;ok, &#123;SupFlags, ChildSpecs&#125;&#125;.</div><div class="line"></div><div class="line"><span class="function"><span class="title">new_process</span><span class="params">()</span> -&gt;</span></div><div class="line">  Pid = proc_lib:spawn_link(fun loop/0),</div><div class="line">  &#123;ok, Pid&#125;.</div><div class="line"></div><div class="line"><span class="function"><span class="title">loop</span><span class="params">()</span> -&gt;</span></div><div class="line">  <span class="keyword">receive</span></div><div class="line">    Msg -&gt;</div><div class="line">      io:format(<span class="string">" self=&gt; ~p, msg=&gt; ~p ~n"</span>,[self(), Msg]),</div><div class="line">     loop()</div><div class="line">  <span class="keyword">end</span>.</div><div class="line"></div><div class="line"><span class="comment">%% ebin/ch_app.app</span></div><div class="line"><span class="comment">%% application的callback模块在ch_app中</span></div><div class="line">&#123;application, ch_app,</div><div class="line"> [&#123;description, <span class="string">"Channel allocator"</span>&#125;,</div><div class="line">  &#123;vsn, <span class="string">"1"</span>&#125;,</div><div class="line">  &#123;modules, [ch_app]&#125;,</div><div class="line">  &#123;registered, []&#125;,</div><div class="line">  &#123;applications, [kernel, stdlib, sasl]&#125;,</div><div class="line">  &#123;mod, &#123;ch_app,[]&#125;&#125;</div><div class="line"> ]&#125;.</div></pre></td></tr></table></figure></p>
+<p>编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">erlc -o ebin src/*.erl</div></pre></td></tr></table></figure></p>
+<p>启动shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">erl -pa ebin</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">1&gt; application:start(ch_app).</div><div class="line">&#123;error,&#123;not_started,sasl&#125;&#125;</div><div class="line">2&gt; application:start(sasl).  </div><div class="line">ok</div><div class="line">3&gt; application:start(ch_app).</div><div class="line">OGRESS REPORT==== 17-Oct-2017::14:58:38 ===</div><div class="line">          supervisor: &#123;local,ch_sup_sup&#125;</div><div class="line">             started: [&#123;pid,&lt;0.76.0&gt;&#125;,</div><div class="line">                       &#123;id,ch3&#125;,</div><div class="line">                       &#123;mfargs,&#123;ch_app,start_link,[ch_sup,child]&#125;&#125;,</div><div class="line">                       &#123;restart_type,permanent&#125;,</div><div class="line">                       &#123;shutdown,brutal_kill&#125;,</div><div class="line">                       &#123;child_type,supervisor&#125;]</div><div class="line"></div><div class="line">=PROGRESS REPORT==== 17-Oct-2017::14:58:38 ===</div><div class="line">         application: ch_app</div><div class="line">          started_at: nonode@nohost</div><div class="line">ok</div></pre></td></tr></table></figure>
+<p>打开observer我们来看看整个监控树<br><img src="/images/ch_app.png" alt="ch_app_tree"><br>ch_sup_sup往右面部分我们都知道是一个supervisor监控树，这一部分的supervisor分析可以看我的(<a href="/2017/10/16/let-supervisor-crash-md/" title="<font color=blue>动手搞死supervisor</font>"><font color="blue">动手搞死supervisor</font></a>)。这里ch_sup_sup左边的两个进程有什么作用呢？我们使用erlang:process_info()查看一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">5&gt; erlang:process_info(pid(0,73,0)).</div><div class="line">[&#123;current_function,&#123;application_master,main_loop,2&#125;&#125;,</div><div class="line"> &#123;initial_call,&#123;proc_lib,init_p,5&#125;&#125;,</div><div class="line"> &#123;status,waiting&#125;,</div><div class="line"> &#123;message_queue_len,0&#125;,</div><div class="line"> &#123;messages,[]&#125;,</div><div class="line"> &#123;links,[&lt;0.33.0&gt;,&lt;0.74.0&gt;]&#125;,%% 0.33.0是application_controller</div><div class="line"> &#123;dictionary,[&#123;&apos;$initial_call&apos;,&#123;application_master,init,4&#125;&#125;,</div><div class="line">              &#123;&apos;$ancestors&apos;,[&lt;0.72.0&gt;]&#125;]&#125;,</div><div class="line"> &#123;trap_exit,true&#125;,</div><div class="line"> &#123;error_handler,error_handler&#125;,</div><div class="line"> &#123;priority,normal&#125;,</div><div class="line"> &#123;group_leader,&lt;0.73.0&gt;&#125;,</div><div class="line"> &#123;total_heap_size,233&#125;,</div><div class="line"> &#123;heap_size,233&#125;,</div><div class="line"> &#123;stack_size,7&#125;,</div><div class="line"> &#123;reductions,27&#125;,</div><div class="line"> &#123;garbage_collection,[&#123;max_heap_size,#&#123;error_logger =&gt; true,kill =&gt; true,size =&gt; 0&#125;&#125;,</div><div class="line">                      &#123;min_bin_vheap_size,46422&#125;,</div><div class="line">                      &#123;min_heap_size,233&#125;,</div><div class="line">                      &#123;fullsweep_after,65535&#125;,</div><div class="line">                      &#123;minor_gcs,0&#125;]&#125;,</div><div class="line"> &#123;suspending,[]&#125;]</div><div class="line">6&gt;  whereis(application_controller).</div><div class="line">&lt;0.33.0&gt;</div><div class="line">7&gt; erlang:process_info(pid(0,74,0)).</div><div class="line">[&#123;current_function,&#123;application_master,loop_it,4&#125;&#125;,</div><div class="line"> &#123;initial_call,&#123;application_master,start_it,4&#125;&#125;,</div><div class="line"> &#123;status,waiting&#125;,</div><div class="line"> &#123;message_queue_len,0&#125;,</div><div class="line"> &#123;messages,[]&#125;,</div><div class="line"> &#123;links,[&lt;0.73.0&gt;,&lt;0.75.0&gt;]&#125;,%% 0.75.0是ch_sup_sup</div><div class="line"> &#123;dictionary,[]&#125;,</div><div class="line"> &#123;trap_exit,true&#125;,</div><div class="line"> &#123;error_handler,error_handler&#125;,</div><div class="line"> &#123;priority,normal&#125;,</div><div class="line"> &#123;group_leader,&lt;0.73.0&gt;&#125;,</div><div class="line"> &#123;total_heap_size,233&#125;,</div><div class="line"> &#123;heap_size,233&#125;,</div><div class="line"> &#123;stack_size,5&#125;,</div><div class="line"> &#123;reductions,83&#125;,</div><div class="line"> &#123;garbage_collection,[&#123;max_heap_size,#&#123;error_logger =&gt; true,kill =&gt; true,size =&gt; 0&#125;&#125;,</div><div class="line">                      &#123;min_bin_vheap_size,46422&#125;,</div><div class="line">                      &#123;min_heap_size,233&#125;,</div><div class="line">                      &#123;fullsweep_after,65535&#125;,</div><div class="line">                      &#123;minor_gcs,0&#125;]&#125;,</div><div class="line"> &#123;suspending,[]&#125;]</div><div class="line">8&gt;</div></pre></td></tr></table></figure></p>
+<p>从current_function里面都看到了application_master这个模块，所以这两个进程的作用我们可以打开该模块的源码分析。0.73.0进程还link了0.33.0这个进程，0.33.0应该是application_controller进程，其主要作用可以从其名字就可以看出来了。为了分析这三个进程的关系我们直接从application:start(ch_app)函数入口。<br><figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%% application.erl</span></div><div class="line"><span class="function"><span class="title">start</span><span class="params">(Application, RestartType)</span> -&gt;</span></div><div class="line">    <span class="keyword">case</span> load(Application) <span class="keyword">of</span></div><div class="line">	ok -&gt;</div><div class="line">	    Name = get_appl_name(Application),</div><div class="line">	    application_controller:start_application(Name, RestartType);</div><div class="line">	&#123;error, &#123;already_loaded, Name&#125;&#125; -&gt;</div><div class="line">	    application_controller:start_application(Name, RestartType);</div><div class="line">	Error -&gt;</div><div class="line">	    Error</div><div class="line">    <span class="keyword">end</span>.</div><div class="line"><span class="function"><span class="title">stop</span><span class="params">(Application)</span> -&gt;</span></div><div class="line">    application_controller:stop_application(Application).</div></pre></td></tr></table></figure></p>
+<p>从application.erl可以看出application模块是对application_controller模块的封装，主要的逻辑还是要到application_controller实现。<br><figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%% application_controller.erl</span></div><div class="line"><span class="function"><span class="title">handle_call</span><span class="params">(&#123;start_application, AppName, RestartType&#125;, From, S)</span> -&gt;</span></div><div class="line">    #state&#123;running = Running, starting = Starting, start_p_false = SPF, </div><div class="line">	   started = Started, start_req = Start_req&#125; = S,</div><div class="line">    <span class="comment">%% Check if the commandline environment variables are OK.</span></div><div class="line">    <span class="comment">%% Incase of erroneous variables do not start the application,</span></div><div class="line">    <span class="comment">%% if the application is permanent crash the node.</span></div><div class="line">    <span class="comment">%% Check if the application is already starting.</span></div><div class="line">    <span class="keyword">case</span> lists:keyfind(AppName, <span class="number">1</span>, Start_req) <span class="keyword">of</span></div><div class="line">	<span class="literal">false</span> -&gt;</div><div class="line">	    <span class="keyword">case</span> <span class="keyword">catch</span> check_start_cond(AppName, RestartType, Started, Running) <span class="keyword">of</span></div><div class="line">		&#123;ok, Appl&#125; -&gt;</div><div class="line">		    Cntrl = cntrl(AppName, S, &#123;ac_start_application_req, AppName&#125;),</div><div class="line">		    Perm = application:get_env(kernel, permissions),</div><div class="line">		    <span class="keyword">case</span> &#123;Cntrl, Perm&#125; <span class="keyword">of</span></div><div class="line">			&#123;true, _&#125; -&gt;</div><div class="line">			    &#123;noreply, S#state&#123;starting = [&#123;AppName, RestartType, normal, From&#125; |</div><div class="line">							  Starting],</div><div class="line">					      start_req = [&#123;AppName, From&#125; | Start_req]&#125;&#125;;</div><div class="line">			&#123;false, undefined&#125; -&gt;</div><div class="line">			    spawn_starter(From, Appl, S, normal),</div><div class="line">			    &#123;noreply, S#state&#123;starting = [&#123;AppName, RestartType, normal, From&#125; |</div><div class="line">							  Starting],</div><div class="line">					      start_req = [&#123;AppName, From&#125; | Start_req]&#125;&#125;;</div><div class="line">			&#123;false, &#123;ok, Perms&#125;&#125; -&gt;</div><div class="line">			    <span class="keyword">case</span> lists:member(&#123;AppName, false&#125;, Perms) <span class="keyword">of</span></div><div class="line">				<span class="literal">false</span> -&gt;</div><div class="line">				    spawn_starter(From, Appl, S, normal),</div><div class="line">				    &#123;noreply, S#state&#123;starting = [&#123;AppName, RestartType, normal, From&#125; |</div><div class="line">								  Starting],</div><div class="line">						      start_req = [&#123;AppName, From&#125; | Start_req]&#125;&#125;;</div><div class="line">				<span class="literal">true</span> -&gt;</div><div class="line">				    SS = S#state&#123;start_p_false = [&#123;AppName, RestartType, normal, From&#125; |</div><div class="line">								  SPF]&#125;,</div><div class="line">				    &#123;reply, ok, SS&#125;</div><div class="line">			    <span class="keyword">end</span></div><div class="line">		    <span class="keyword">end</span>;</div><div class="line">		&#123;error, _R&#125; = Error -&gt;</div><div class="line">		    &#123;reply, Error, S&#125;</div><div class="line">	    <span class="keyword">end</span>;</div><div class="line">	&#123;AppName, _FromX&#125; -&gt;</div><div class="line">	    SS = S#state&#123;start_req = [&#123;AppName, From&#125; | Start_req]&#125;,</div><div class="line">	    &#123;noreply, SS&#125;</div><div class="line">    <span class="keyword">end</span>;</div><div class="line"></div><div class="line"><span class="comment">%% 启动一个进程来启动app</span></div><div class="line"><span class="function"><span class="title">spawn_starter</span><span class="params">(From, Appl, S, Type)</span> -&gt;</span></div><div class="line">    spawn_link(?MODULE, init_starter, [From, Appl, S, Type]).</div><div class="line"></div><div class="line"><span class="function"><span class="title">init_starter</span><span class="params">(_From, Appl, S, Type)</span> -&gt;</span></div><div class="line">    process_flag(trap_exit, true),</div><div class="line">    AppName = Appl#appl.name,</div><div class="line"><span class="comment">%% 启动application的master进程然后把applicaton的信息存在在state里面</span></div><div class="line">    gen_server:cast(?AC, &#123;application_started, AppName, </div><div class="line">			  catch start_appl(Appl, S, Type)&#125;).</div><div class="line"></div><div class="line"><span class="function"><span class="title">start_appl</span><span class="params">(Appl, S, Type)</span> -&gt;</span></div><div class="line">    ApplData = Appl#appl.appl_data,</div><div class="line">    <span class="keyword">case</span> ApplData#appl_data.mod <span class="keyword">of</span></div><div class="line">	[] -&gt;</div><div class="line">	    &#123;ok, undefined&#125;;</div><div class="line">	_ -&gt;</div><div class="line">	    <span class="comment">%% Name = ApplData#appl_data.name,</span></div><div class="line">	    Running = S#state.running,</div><div class="line">	    foreach(</div><div class="line">	      <span class="keyword">fun</span>(AppName) -&gt;</div><div class="line">		      <span class="keyword">case</span> lists:keymember(AppName, <span class="number">1</span>, Running) <span class="keyword">of</span></div><div class="line">			  <span class="literal">true</span> -&gt;</div><div class="line">			      ok;</div><div class="line">			  <span class="literal">false</span> -&gt;</div><div class="line">			      throw(&#123;info, &#123;not_running, AppName&#125;&#125;)</div><div class="line">		      <span class="keyword">end</span></div><div class="line">	      <span class="keyword">end</span>, Appl#appl.apps),</div><div class="line"><span class="comment">%% 启动application的master程序和application的监控树</span></div><div class="line">	    <span class="keyword">case</span> application_master:start_link(ApplData, Type) <span class="keyword">of</span></div><div class="line">		&#123;ok, _Pid&#125; = Ok -&gt;</div><div class="line">		    Ok;</div><div class="line">		&#123;error, _Reason&#125; = Error -&gt;</div><div class="line">		    throw(Error)</div><div class="line">	    <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span>.</div></pre></td></tr></table></figure></p>
+<p>从源码中可以看到application_controller主要的作用就是控制所有applications的启动重启和关闭,监控着所有的applications。通过sys:get_state来看看application_controller的state。<br><figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="number">8</span>&gt; rr(<span class="string">"/usr/local/Cellar/erlang/19.3/lib/erlang/lib/kernel-5.2/src/application_controller.erl"</span>).</div><div class="line">[appl,appl_data,state]</div><div class="line"><span class="number">9</span>&gt; </div><div class="line"><span class="number">9</span>&gt; sys:get_state(application_controller).</div><div class="line">#state&#123;loading = [],starting = [],start_p_false = [],</div><div class="line">       running = [&#123;ch_app,&lt;<span class="number">0.73</span>.<span class="number">0</span>&gt;&#125;,</div><div class="line">                  &#123;sasl,&lt;<span class="number">0.64</span>.<span class="number">0</span>&gt;&#125;,</div><div class="line">                  &#123;stdlib,undefined&#125;,</div><div class="line">                  &#123;kernel,&lt;<span class="number">0.35</span>.<span class="number">0</span>&gt;&#125;],</div><div class="line">       control = [],</div><div class="line">       started = [&#123;ch_app,temporary&#125;,</div><div class="line">                  &#123;sasl,temporary&#125;,</div><div class="line">                  &#123;stdlib,permanent&#125;,</div><div class="line">                  &#123;kernel,permanent&#125;],</div><div class="line">       start_req = [],conf_data = []&#125;</div></pre></td></tr></table></figure></p>
+<p>从stated中可以看到有四个app，ch_app和sasl的app都是temporary而stdlib和kernerl都是permanent这个有什么不一样吗？</p>
+<blockquote>
+<p>Note:<br>         The RestartType specifies what should happen if theapplication dies:<br>         If it is permanent, all other applications are terminated,  and the application_controller dies.<br>         If it is transient, and the application dies normally,<br>           this is reported and no other applications are terminated.<br>         If the application dies abnormally, all other applicationsare terminated, and the application_controller dies.<br>         If it is temporary and the application dies this is reported and no other applications are terminated.<br>         In this way,an application can run in test mode, without disturbing the other applications.<br>         The caller of this function is suspended until the application<br>         is started, either locally or distributed.<br>`</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/let-supervisor-crash-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -767,7 +921,7 @@ killed.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -789,7 +943,7 @@ killed.
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -98,7 +98,4 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/yangcancai/blog
-  # example, https://github.com/hexojs/hexojs.github.io
-  branch: gh-pages
+  type: ""

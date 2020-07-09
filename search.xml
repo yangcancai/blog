@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NFServer</title>
+    <url>/blog/2020/07/08/NFServer/</url>
+    <content><![CDATA[<p>   NoahGameFrame是一个c++开发的开源游戏服务器框架，架构的一些设计理念来自ogre和bigworld。<br>据维护者ketoo介绍有墨麟集团开发的&lt;&lt;全民无双&gt;&gt; 3D ARPG 手游是使用NoahFram开发的。<br>我个人认为这个框架最大的优点是代码结构简单易于维护，使用的都是标准c++语法看代码不累有条理。<br>本章节主要来介绍主题框架部分内容，包括主要的插件逻辑、模块结构等。</p>
+<h2 id="NoahGameFrame版本和IDE"><a href="#NoahGameFrame版本和IDE" class="headerlink" title="NoahGameFrame版本和IDE"></a>NoahGameFrame版本和IDE</h2><ul>
+<li><a href="https://github.com/ketoo/NoahGameFrame/tree/2e37e7166bbd018d78fb14563afa748d8a188f04" target="_blank" rel="noopener">github 版本</a></li>
+<li>编译工具 vs2019<h2 id="主要的类图"><a href="#主要的类图" class="headerlink" title="主要的类图"></a>主要的类图</h2><img src="NFServer.png" alt=""><br>从uml类图可以看出来，插件的和插件逻辑模块都是继承NFIModule接口，<br>NFIModule都传入一个NFIPluginManager，<br>因为所有的模块都会注册到NFIPluginManager中，<br>所以插件中的模块如果需要别的插件的模块只需要调用NFIPluginManager的<br>FindModule函数就可以了，基本的使用方法就是这样。<h2 id="分析流程"><a href="#分析流程" class="headerlink" title="分析流程"></a>分析流程</h2><h3 id="主要的文件"><a href="#主要的文件" class="headerlink" title="主要的文件"></a>主要的文件</h3></li>
+<li>NFServer.cpp</li>
+<li>NFPluginServer.cpp</li>
+<li>NFPluginManager.cpp</li>
+<li>NFKernelPlugin.cpp</li>
+<li>NFThreadPoolModule.cpp</li>
+<li>NFCelModule.cpp</li>
+</ul>
+<h3 id="代码流程分析"><a href="#代码流程分析" class="headerlink" title="代码流程分析"></a>代码流程分析</h3><p>main入口函数在NFServer.cpp模块，函数定义了NFPluginServer服务器列表，<br>根据main的参数情况来区分是启动全部服务器还是启动单个服务器，这里主要有三个功能：<br>第一、设置注册插件的回调函数NFPluginServer-&gt;SetMidWareLoader,<br>接着执行初始化函数NFPluginServer-&gt;Init<br>第二、一个while主线程，执行帧循环NFPluginServer-&gt;Execute<br>第三、程序关闭前的清理动作执行NFPluginServer-&gt;Finalize(所有插件执行BeforeShut,Shut,Finalize)<br>接下来每个函数展开来分析</p>
+<h4 id="NFPluginServer-gt-Init函数"><a href="#NFPluginServer-gt-Init函数" class="headerlink" title="NFPluginServer-&gt;Init函数"></a>NFPluginServer-&gt;Init函数</h4><ul>
+<li>打印logo</li>
+<li>创建NFPluginManager对象，该对象的指针会转递给所有注册的模块</li>
+<li>处理控制台消息事件ProcessParameter</li>
+<li>加载xml配置文件获得所有配置的插件名称</li>
+<li>执行SetMidWareLoader注册的回调函数进行插件注册(一般是业务的插件在这里优先注册)</li>
+<li>根据xml获取的插件名称进行插件注册(先进行static插件的注册，再根据配置文件中不存在的插件再卸载)<h6 id="主要代码实现"><a href="#主要代码实现" class="headerlink" title="主要代码实现"></a>主要代码实现</h6></li>
+<li>1.CREATE_PLUGIN(pPluginManager, className)<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CREATE_PLUGIN(pManager, className)\</span></span><br><span class="line">NFIPlugin* pCreatePlugin##className = <span class="keyword">new</span> className(pManager);\</span><br><span class="line">pManager-&gt;Registered( pCreatePlugin##className );</span><br></pre></td></tr></table></figure></li>
+<li>2.pPluginManager-&gt;Registered(NFIPlugin* pPlugin) <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFPluginManager::Registered</span><span class="params">(NFIPlugin* plugin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; strPluginName = plugin-&gt;GetPluginName();</span><br><span class="line">    <span class="keyword">if</span> (!FindPlugin(strPluginName))</span><br><span class="line">	&#123;</span><br><span class="line">	mPluginInstanceMap.insert(PluginInstanceMap::value_type(strPluginName, plugin));</span><br><span class="line">     plugin-&gt;Install();</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; strPluginName &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		assert(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3.plugin-&gt;Install<blockquote>
+<p>这里就拿NFKernelPlugin来举例说明</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REGISTER_MODULE(pManager, classBaseName, className)  \</span></span><br><span class="line">	assert((TIsDerived&lt;classBaseName, NFIModule&gt;::Result));	\</span><br><span class="line">	assert((TIsDerived&lt;className, classBaseName&gt;::Result));	\</span><br><span class="line">	NFIModule* pRegisterModule##className= <span class="keyword">new</span> className(pManager); \</span><br><span class="line">    pRegisterModule##className-&gt;strName = (#className); \</span><br><span class="line">    pManager-&gt;AddModule( #classBaseName, pRegisterModule##className );\</span><br><span class="line">    <span class="keyword">this</span>-&gt;AddElement( #classBaseName, pRegisterModule##className );</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFKernelPlugin::Install</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    REGISTER_MODULE(pPluginManager, NFISceneModule, NFSceneModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIKernelModule, NFKernelModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIEventModule, NFEventModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIScheduleModule, NFScheduleModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIDataTailModule, NFDataTailModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFICellModule, NFCellModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIThreadPoolModule, NFThreadPoolModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIELOModule, NFELOModule)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3.pPluginManager-&gt;Awake</li>
+<li>4.pPluginManager-&gt;Init</li>
+<li>5.pPluginManager-&gt;AfterInit</li>
+<li>6.pPluginManager-&gt;CheckConfig</li>
+<li>7.pPluginManager-&gt;ReadyExecute</li>
+</ul>
+<h4 id="NFPluginServer-gt-Execute函数"><a href="#NFPluginServer-gt-Execute函数" class="headerlink" title="NFPluginServer-&gt;Execute函数"></a>NFPluginServer-&gt;Execute函数</h4><ul>
+<li>pPluginManager-&gt;Execute<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFPluginServer::Execute</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> NF_PLATFORM == NF_PLATFORM_WIN</span></span><br><span class="line">    __try</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        pPluginManager-&gt;Execute();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> NF_PLATFORM == NF_PLATFORM_WIN</span></span><br><span class="line">    __except (ApplicationCrashHandler(GetExceptionInformation()))</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception &amp; e)</span><br><span class="line">    &#123;</span><br><span class="line">        NFException::StackTrace(<span class="number">11</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (...)</span><br><span class="line">    &#123;</span><br><span class="line">        NFException::StackTrace(<span class="number">11</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这个函数会使用try catch打印报错的调用栈,不能因为个别原因造成程序崩溃</li>
+</ul>
+<h4 id="NFPluginServer-gt-Finalize函数"><a href="#NFPluginServer-gt-Finalize函数" class="headerlink" title="NFPluginServer-&gt;Finalize函数"></a>NFPluginServer-&gt;Finalize函数</h4><ul>
+<li>pPluginManager-&gt;BeforeShut</li>
+<li>pPluginManager-&gt;Shut</li>
+<li>pPluginManager-&gt;Finalize<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">NFPluginManager::Finalize</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PluginInstanceMap::iterator itInstance = mPluginInstanceMap.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">for</span> (; itInstance != mPluginInstanceMap.<span class="built_in">end</span>(); itInstance++)</span><br><span class="line">	&#123;</span><br><span class="line">		SetCurrentPlugin(itInstance-&gt;second);</span><br><span class="line">		itInstance-&gt;second-&gt;Finalize();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line">	PluginNameMap::iterator it = mPluginNameMap.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">for</span> (; it != mPluginNameMap.<span class="built_in">end</span>(); it++)</span><br><span class="line">	&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> NF_DYNAMIC_PLUGIN</span></span><br><span class="line">		UnLoadPluginLibrary(it-&gt;first);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">		UnLoadStaticPlugin(it-&gt;first);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mPluginInstanceMap.<span class="built_in">clear</span>();</span><br><span class="line">	mPluginNameMap.<span class="built_in">clear</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>pPluginManager = nullptr(智能指针自动释放内存)</li>
+</ul>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>启动流程和插件模式都比较简单，大家看一下都可以理解。不过这个版本的代码还没有加上有效的退出程序代码，<br>所以程序退出是比较暴力的。一些清理工作都无法正常完成。类图是我自己剥离了主框架代码写的,可能有一些差异。</p>
+]]></content>
+      <categories>
+        <category>c++</category>
+        <category>NoahGameFrame</category>
+      </categories>
+      <tags>
+        <tag>Thread</tag>
+        <tag>c++11</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
-    <url>/blog/2020/06/24/hello-world/</url>
+    <url>/blog/2020/07/09/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 

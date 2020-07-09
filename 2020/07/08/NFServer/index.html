@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yangcancai.github.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="NoahGameFrame是一个c++开发的开源游戏服务器框架，架构的一些设计理念来自ogre和bigworld。据维护者ketoo介绍有墨麟集团开发的&lt;&lt;全民无双&gt;&gt; 3D ARPG 手游是使用NoahFram开发的。我个人认为这个框架最大的优点是代码结构简单易于维护，使用的都是标准c++语法看代码不累有条理。本章节主要来介绍主题框架部分内容，包括主要的插件逻辑、模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NFServer">
+<meta property="og:url" content="http://yangcancai.github.io/blog/2020/07/08/NFServer/index.html">
+<meta property="og:site_name" content="鸡尾草">
+<meta property="og:description" content="NoahGameFrame是一个c++开发的开源游戏服务器框架，架构的一些设计理念来自ogre和bigworld。据维护者ketoo介绍有墨麟集团开发的&lt;&lt;全民无双&gt;&gt; 3D ARPG 手游是使用NoahFram开发的。我个人认为这个框架最大的优点是代码结构简单易于维护，使用的都是标准c++语法看代码不累有条理。本章节主要来介绍主题框架部分内容，包括主要的插件逻辑、模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yangcancai.github.io/blog/2020/07/08/NFServer/NFServer.png">
+<meta property="article:published_time" content="2020-07-08T01:31:59.000Z">
+<meta property="article:modified_time" content="2020-07-09T11:29:59.155Z">
+<meta property="article:author" content="Cam">
+<meta property="article:tag" content="Thread">
+<meta property="article:tag" content="c++11">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yangcancai.github.io/blog/2020/07/08/NFServer/NFServer.png">
+
+<link rel="canonical" href="http://yangcancai.github.io/blog/2020/07/08/NFServer/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NFServer | 鸡尾草</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">鸡尾草</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yangcancai.github.io/blog/2020/07/08/NFServer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
+      <meta itemprop="name" content="Cam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸡尾草">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NFServer
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-08 09:31:59" itemprop="dateCreated datePublished" datetime="2020-07-08T09:31:59+08:00">2020-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-09 19:29:59" itemprop="dateModified" datetime="2020-07-09T19:29:59+08:00">2020-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/c/NoahGameFrame/" itemprop="url" rel="index"><span itemprop="name">NoahGameFrame</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>   NoahGameFrame是一个c++开发的开源游戏服务器框架，架构的一些设计理念来自ogre和bigworld。<br>据维护者ketoo介绍有墨麟集团开发的&lt;&lt;全民无双&gt;&gt; 3D ARPG 手游是使用NoahFram开发的。<br>我个人认为这个框架最大的优点是代码结构简单易于维护，使用的都是标准c++语法看代码不累有条理。<br>本章节主要来介绍主题框架部分内容，包括主要的插件逻辑、模块结构等。</p>
+<h2 id="NoahGameFrame版本和IDE"><a href="#NoahGameFrame版本和IDE" class="headerlink" title="NoahGameFrame版本和IDE"></a>NoahGameFrame版本和IDE</h2><ul>
+<li><a href="https://github.com/ketoo/NoahGameFrame/tree/2e37e7166bbd018d78fb14563afa748d8a188f04" target="_blank" rel="noopener">github 版本</a></li>
+<li>编译工具 vs2019<h2 id="主要的类图"><a href="#主要的类图" class="headerlink" title="主要的类图"></a>主要的类图</h2><img src="NFServer.png" alt=""><br>从uml类图可以看出来，插件的和插件逻辑模块都是继承NFIModule接口，<br>NFIModule都传入一个NFIPluginManager，<br>因为所有的模块都会注册到NFIPluginManager中，<br>所以插件中的模块如果需要别的插件的模块只需要调用NFIPluginManager的<br>FindModule函数就可以了，基本的使用方法就是这样。<h2 id="分析流程"><a href="#分析流程" class="headerlink" title="分析流程"></a>分析流程</h2><h3 id="主要的文件"><a href="#主要的文件" class="headerlink" title="主要的文件"></a>主要的文件</h3></li>
+<li>NFServer.cpp</li>
+<li>NFPluginServer.cpp</li>
+<li>NFPluginManager.cpp</li>
+<li>NFKernelPlugin.cpp</li>
+<li>NFThreadPoolModule.cpp</li>
+<li>NFCelModule.cpp</li>
+</ul>
+<h3 id="代码流程分析"><a href="#代码流程分析" class="headerlink" title="代码流程分析"></a>代码流程分析</h3><p>main入口函数在NFServer.cpp模块，函数定义了NFPluginServer服务器列表，<br>根据main的参数情况来区分是启动全部服务器还是启动单个服务器，这里主要有三个功能：<br>第一、设置注册插件的回调函数NFPluginServer-&gt;SetMidWareLoader,<br>接着执行初始化函数NFPluginServer-&gt;Init<br>第二、一个while主线程，执行帧循环NFPluginServer-&gt;Execute<br>第三、程序关闭前的清理动作执行NFPluginServer-&gt;Finalize(所有插件执行BeforeShut,Shut,Finalize)<br>接下来每个函数展开来分析</p>
+<h4 id="NFPluginServer-gt-Init函数"><a href="#NFPluginServer-gt-Init函数" class="headerlink" title="NFPluginServer-&gt;Init函数"></a>NFPluginServer-&gt;Init函数</h4><ul>
+<li>打印logo</li>
+<li>创建NFPluginManager对象，该对象的指针会转递给所有注册的模块</li>
+<li>处理控制台消息事件ProcessParameter</li>
+<li>加载xml配置文件获得所有配置的插件名称</li>
+<li>执行SetMidWareLoader注册的回调函数进行插件注册(一般是业务的插件在这里优先注册)</li>
+<li>根据xml获取的插件名称进行插件注册(先进行static插件的注册，再根据配置文件中不存在的插件再卸载)<h6 id="主要代码实现"><a href="#主要代码实现" class="headerlink" title="主要代码实现"></a>主要代码实现</h6></li>
+<li>1.CREATE_PLUGIN(pPluginManager, className)<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CREATE_PLUGIN(pManager, className)\</span></span><br><span class="line">NFIPlugin* pCreatePlugin##className = <span class="keyword">new</span> className(pManager);\</span><br><span class="line">pManager-&gt;Registered( pCreatePlugin##className );</span><br></pre></td></tr></table></figure></li>
+<li>2.pPluginManager-&gt;Registered(NFIPlugin* pPlugin) <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFPluginManager::Registered</span><span class="params">(NFIPlugin* plugin)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; strPluginName = plugin-&gt;GetPluginName();</span><br><span class="line">    <span class="keyword">if</span> (!FindPlugin(strPluginName))</span><br><span class="line">	&#123;</span><br><span class="line">	mPluginInstanceMap.insert(PluginInstanceMap::value_type(strPluginName, plugin));</span><br><span class="line">     plugin-&gt;Install();</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; strPluginName &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		assert(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3.plugin-&gt;Install<blockquote>
+<p>这里就拿NFKernelPlugin来举例说明</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REGISTER_MODULE(pManager, classBaseName, className)  \</span></span><br><span class="line">	assert((TIsDerived&lt;classBaseName, NFIModule&gt;::Result));	\</span><br><span class="line">	assert((TIsDerived&lt;className, classBaseName&gt;::Result));	\</span><br><span class="line">	NFIModule* pRegisterModule##className= <span class="keyword">new</span> className(pManager); \</span><br><span class="line">    pRegisterModule##className-&gt;strName = (#className); \</span><br><span class="line">    pManager-&gt;AddModule( #classBaseName, pRegisterModule##className );\</span><br><span class="line">    <span class="keyword">this</span>-&gt;AddElement( #classBaseName, pRegisterModule##className );</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFKernelPlugin::Install</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    REGISTER_MODULE(pPluginManager, NFISceneModule, NFSceneModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIKernelModule, NFKernelModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIEventModule, NFEventModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIScheduleModule, NFScheduleModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIDataTailModule, NFDataTailModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFICellModule, NFCellModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIThreadPoolModule, NFThreadPoolModule)</span><br><span class="line">	REGISTER_MODULE(pPluginManager, NFIELOModule, NFELOModule)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3.pPluginManager-&gt;Awake</li>
+<li>4.pPluginManager-&gt;Init</li>
+<li>5.pPluginManager-&gt;AfterInit</li>
+<li>6.pPluginManager-&gt;CheckConfig</li>
+<li>7.pPluginManager-&gt;ReadyExecute</li>
+</ul>
+<h4 id="NFPluginServer-gt-Execute函数"><a href="#NFPluginServer-gt-Execute函数" class="headerlink" title="NFPluginServer-&gt;Execute函数"></a>NFPluginServer-&gt;Execute函数</h4><ul>
+<li>pPluginManager-&gt;Execute<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NFPluginServer::Execute</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> NF_PLATFORM == NF_PLATFORM_WIN</span></span><br><span class="line">    __try</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        pPluginManager-&gt;Execute();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> NF_PLATFORM == NF_PLATFORM_WIN</span></span><br><span class="line">    __except (ApplicationCrashHandler(GetExceptionInformation()))</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception &amp; e)</span><br><span class="line">    &#123;</span><br><span class="line">        NFException::StackTrace(<span class="number">11</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (...)</span><br><span class="line">    &#123;</span><br><span class="line">        NFException::StackTrace(<span class="number">11</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这个函数会使用try catch打印报错的调用栈,不能因为个别原因造成程序崩溃</li>
+</ul>
+<h4 id="NFPluginServer-gt-Finalize函数"><a href="#NFPluginServer-gt-Finalize函数" class="headerlink" title="NFPluginServer-&gt;Finalize函数"></a>NFPluginServer-&gt;Finalize函数</h4><ul>
+<li>pPluginManager-&gt;BeforeShut</li>
+<li>pPluginManager-&gt;Shut</li>
+<li>pPluginManager-&gt;Finalize<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">NFPluginManager::Finalize</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PluginInstanceMap::iterator itInstance = mPluginInstanceMap.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">for</span> (; itInstance != mPluginInstanceMap.<span class="built_in">end</span>(); itInstance++)</span><br><span class="line">	&#123;</span><br><span class="line">		SetCurrentPlugin(itInstance-&gt;second);</span><br><span class="line">		itInstance-&gt;second-&gt;Finalize();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">////////////////////////////////////////////////</span></span><br><span class="line"></span><br><span class="line">	PluginNameMap::iterator it = mPluginNameMap.<span class="built_in">begin</span>();</span><br><span class="line">	<span class="keyword">for</span> (; it != mPluginNameMap.<span class="built_in">end</span>(); it++)</span><br><span class="line">	&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> NF_DYNAMIC_PLUGIN</span></span><br><span class="line">		UnLoadPluginLibrary(it-&gt;first);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">		UnLoadStaticPlugin(it-&gt;first);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	mPluginInstanceMap.<span class="built_in">clear</span>();</span><br><span class="line">	mPluginNameMap.<span class="built_in">clear</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>pPluginManager = nullptr(智能指针自动释放内存)</li>
+</ul>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>启动流程和插件模式都比较简单，大家看一下都可以理解。不过这个版本的代码还没有加上有效的退出程序代码，<br>所以程序退出是比较暴力的。一些清理工作都无法正常完成。类图是我自己剥离了主框架代码写的,可能有一些差异。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Thread/" rel="tag"># Thread</a>
+              <a href="/blog/tags/c-11/" rel="tag"># c++11</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/06/18/dead-lock/" rel="prev" title="dead_lock">
+      <i class="fa fa-chevron-left"></i> dead_lock
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/07/09/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NoahGameFrame版本和IDE"><span class="nav-number">1.</span> <span class="nav-text">NoahGameFrame版本和IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要的类图"><span class="nav-number">2.</span> <span class="nav-text">主要的类图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析流程"><span class="nav-number">3.</span> <span class="nav-text">分析流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要的文件"><span class="nav-number">3.1.</span> <span class="nav-text">主要的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码流程分析"><span class="nav-number">3.2.</span> <span class="nav-text">代码流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NFPluginServer-gt-Init函数"><span class="nav-number">3.2.1.</span> <span class="nav-text">NFPluginServer-&gt;Init函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#主要代码实现"><span class="nav-number">3.2.1.0.1.</span> <span class="nav-text">主要代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NFPluginServer-gt-Execute函数"><span class="nav-number">3.2.2.</span> <span class="nav-text">NFPluginServer-&gt;Execute函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NFPluginServer-gt-Finalize函数"><span class="nav-number">3.2.3.</span> <span class="nav-text">NFPluginServer-&gt;Finalize函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Cam"
+      src="/blog/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Cam</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cam</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>

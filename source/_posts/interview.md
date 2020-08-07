@@ -7,7 +7,61 @@ categories:
 ---
 ## 某大厂(一个小时)
 ### c++基础知识
-- static在哪些地方使用有什么作用
+#### static在哪些地方使用有什么作用
+- 类的成员函数或者成员变量可以定义为static
+- 所有对象共享静态成员数据,程序开始运行时分配空间，程序结束后释放空间
+- 静态方法调用: 类名::函数名
+- 静态方法只能调用静态成员
+- 静态成员使用前必须初始化且初始化只能在类外,cpp文件中
+- static函数和函数外的static变量作用域只在本文件,在cpp中定义。不要在.h中定义
+```c++
+// StaticDemo.h
+#ifndef DEMO_CPP_STATICDEMO_H
+#define DEMO_CPP_STATICDEMO_H
+#include <iostream>
+extern int GlobalData;// 所有include该头文件的cpp都能访问GlobalData
+class StaticDemo {
+public:
+    static int GetData();
+    static void SetData(const int& data);
+    static void Test();
+private:
+    static int m_Data;
+};
+
+#endif //DEMO_CPP_STATICDEMO_H
+
+// StaticDemo.cpp
+#include "StaticDemo.h"
+int GlobalData = 2;// 全局变量可以被别的cpp文件共享，需要在头文件添加extern int GlobalData;
+int StaticDemo::m_Data = 10;// 只能在cpp定义类的静态变量
+void StaticDemo::SetData(const int &data) {
+    m_Data = data;
+}
+int StaticDemo::GetData() {
+    return m_Data;
+}
+void StaticDemo::Test(){
+        GlobalData = 3;
+        StaticDemo s;
+        // 类名访问静态成员函数推荐使用
+        std::cout << StaticDemo::GetData() << " ";
+        // 对象名访问静态函数
+        s.SetData(30);
+        std::cout << s.GetData() << " ";
+        // 打印结果: 10 30
+}
+// main.cpp
+#include "StaticDemo.h"
+#include <iostream>
+int main(int argc, char** argv){
+   StaticDemo::Test();
+   // 别的cpp文件的全局变量
+   std::cout << GlobalData << std::endl;
+   // 输出结果:3 
+   return 0;
+}
+````
 - 栈和堆的区别
 - 构造函数和析构函数是否可以定义为virtual，为什么？
 - stl有哪些数据结构，哈希结构的实现原理和map的实现原理 

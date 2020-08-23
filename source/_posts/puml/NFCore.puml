@@ -1,0 +1,95 @@
+@startuml
+interface NFIRecordManager{
+    virtual bool SetRecordInt(const std::string& strRecordName, const int nRow, const int nCol, const NFINT64 nValue) = 0;
+    virtual NFINT64 GetRecordInt(const std::string& strRecordName, const int nRow, const int nCol) = 0;
+}
+interface NFIObject{
+    virtual NF_SHARE_PTR<NFIRecordManager> GetRecordManager() = 0;
+    virtual NF_SHARE_PTR<NFIPropertyManager> GetPropertyManager() = 0;
+    virtual bool FindProperty(const std::string& strPropertyName) = 0;
+    virtual bool SetPropertyInt(const std::string& strPropertyName, const NFINT64 nValue) = 0;
+    virtual NFINT64 GetPropertyInt(const std::string& strPropertyName) = 0;
+    virtual bool SetRecordInt(const std::string& strRecordName, const int nRow, const int nCol, const NFINT64 nValue) = 0;
+    virtual NFINT64 GetRecordInt(const std::string& strRecordName, const int nRow, const int nCol) = 0;
+}
+interface NFIProperty{
+	virtual void SetValue(const NFIProperty* pProperty) = 0;
+	virtual bool SetInt(const NFINT64 value) = 0;
+	virtual const NFDATA_TYPE GetType() const = 0;
+	virtual NFINT64 GetInt() const = 0;
+	virtual double GetFloat() const = 0;
+	virtual const NF_SHARE_PTR<NFList<std::string>> GetEmbeddedList() const = 0;
+	virtual const NF_SHARE_PTR<NFMapEx<std::string, std::string>> GetEmbeddedMap() const = 0;
+	virtual void RegisterCallback(const PROPERTY_EVENT_FUNCTOR_PTR& cb) = 0;
+}
+interface NFIPropertyManager{
+    virtual bool RegisterCallback(const std::string& strProperty, const PROPERTY_EVENT_FUNCTOR_PTR& cb) = 0;
+    virtual NF_SHARE_PTR<NFIProperty> AddProperty(const NFGUID& self, NF_SHARE_PTR<NFIProperty> pProperty) = 0;
+    virtual NF_SHARE_PTR<NFIProperty> AddProperty(const NFGUID& self, const std::string& strPropertyName, const NFDATA_TYPE varType) = 0;
+    virtual bool SetPropertyInt(const std::string& strPropertyName, const NFINT64 nValue) = 0;
+    virtual NFINT64 GetPropertyInt(const std::string& strPropertyName) = 0;
+}
+interface NFIRecord{
+    virtual bool SetInt(const int nRow, const int nCol, const NFINT64 value) = 0;
+    virtual NFINT64 GetInt(const int nRow, const int nCol) const = 0;
+}
+class NFRecordManager{}
+class NFRecord{
+    typedef std::vector< NF_SHARE_PTR<NFData> > TRECORDVEC;
+	TRECORDVEC mtRecordVec;
+	std::vector<int> mVecUsedState;
+    int mnMaxRow;
+    NFGUID mSelf;
+    bool mbSave;
+    bool mbPublic;
+    bool mbPrivate;
+	bool mbCache;
+	bool mbRef;
+	bool mbForce;
+	bool mbUpload;
+    std::string mstrRecordName;
+    typedef std::vector<RECORD_EVENT_FUNCTOR_PTR> TRECORDCALLBACKEX;
+    TRECORDCALLBACKEX mtRecordCallback;
+}
+class NFProperty{
+    NFGUID mSelf;
+    std::string msPropertyName;
+    NFDATA_TYPE eType;
+    NF_SHARE_PTR<NFData> mxData;
+    NF_SHARE_PTR<NFMapEx<std::string, std::string>> mxEmbeddedMap;
+    NF_SHARE_PTR<NFList<std::string>> mxEmbeddedList;
+    bool mbPublic;
+    bool mbPrivate;
+    bool mbSave;
+    bool mbCache;
+	bool mbRef;
+	bool mbForce;
+	bool mbUpload;
+}
+class NFPropertyManager{
+    NFGUID mSelf;
+    std::map<std::string, int> mxPropertyIndexMap;
+}
+class NFObject{
+    NF_SHARE_PTR<NFIRecordManager> m_pRecordManager;
+    NF_SHARE_PTR<NFIPropertyManager> m_pPropertyManager;
+}
+class NFMapEx<string, NFIProperty|NFIRecord>
+class NFData{}
+class NFDataList{}
+NFMapEx <|-- NFIPropertyManager
+NFMapEx <|-- NFIRecordManager
+NFIPropertyManager <|-- NFPropertyManager
+NFIProperty <|-- NFProperty
+NFIRecordManager <|-- NFRecordManager
+NFIProperty <-- NFMapEx : < 关联
+NFIRecord <-- NFMapEx : < 关联
+NFIObject <|-- NFObject
+NFObject o- NFIPropertyManager : 聚合 >
+NFObject o- NFIRecordManager : 聚合 >
+NFIRecord <|-- NFRecord
+NFDataList *- NFData :  组合 >
+NFRecord *- NFDataList : 组合 >
+NFProperty *- NFData : 组合 >
+
+@enduml

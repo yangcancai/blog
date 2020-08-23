@@ -1,0 +1,53 @@
+@startuml
+
+interface NFIPlugin{
+bool Awake();
+bool Init();
+bool AfterInit();
+bool BeforeShut();
+bool Shut();
+bool Install();
+bool UnInstall();
+private:map<string, NFIModule*> mModules
+}
+interface NFIModule{
+bool Awake();
+bool Init();
+bool AfterInit();
+bool BeforeShut();
+bool Shut();
+NFIModule(NFIPluginManager* p)
+protected: NFIPluginManager* pPluginManager
+}
+interface NFIPluginManager{
+bool Awake();
+bool Init();
+bool AfterInit();
+bool BeforeShut();
+bool Shut();
+bool Registed(NFIPlugin*);
+bool UnRegisted(NFIPlugin*);
+bool AddModule(string,NFIModule*);
+bool RemoveModule(string);
+NFIModule* FindModule(string);
+T* FindModule();
+}
+interface NFIThreadPoolModule{
+DoAsyncTask()
+}
+
+class NFPluginManager{
+private:
+map<string,NFIPlugin*> mPlugins;
+map<string,NFIModule*> mModules;
+}
+NFIPluginManager <|-- NFPluginManager
+NFIThreadPoolModule <|-- NFThreadPoolModule
+NFIModule <|-- NFIThreadPoolModule
+NFIModule <|-- NFIPlugin
+NFIPlugin <|-- Example
+NFIModule <|-- ExampleModule
+NFIPlugin <|-- NFKernelPlugin
+Example -- ExampleModule
+
+@enduml

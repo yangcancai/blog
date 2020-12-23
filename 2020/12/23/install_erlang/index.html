@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"yangcancai.github.io","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="鸡尾草">
-<meta property="og:url" content="http://yangcancai.github.io/blog/archives/index.html">
+  <meta name="description" content="centos rpm安装erlang安装依赖12sudo yum install  build-essential openssl openssl-devel unixODBC unixODBC-devel  make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xzsudo yum install unixODBC  unixODBC-deve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install_erlang">
+<meta property="og:url" content="http://yangcancai.github.io/blog/2020/12/23/install_erlang/index.html">
 <meta property="og:site_name" content="鸡尾草">
+<meta property="og:description" content="centos rpm安装erlang安装依赖12sudo yum install  build-essential openssl openssl-devel unixODBC unixODBC-devel  make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xzsudo yum install unixODBC  unixODBC-deve">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-23T02:56:10.000Z">
+<meta property="article:modified_time" content="2020-12-23T03:55:46.292Z">
 <meta property="article:author" content="Cam">
+<meta property="article:tag" content="install">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yangcancai.github.io/blog/archives/">
+<link rel="canonical" href="http://yangcancai.github.io/blog/2020/12/23/install_erlang/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 鸡尾草</title>
+  <title>install_erlang | 鸡尾草</title>
   
 
 
@@ -182,216 +187,104 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 9 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yangcancai.github.io/blog/2020/12/23/install_erlang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
+      <meta itemprop="name" content="Cam">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="鸡尾草">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          install_erlang
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-23 10:56:10 / 修改时间：11:55:46" itemprop="dateCreated datePublished" datetime="2020-12-23T10:56:10+08:00">2020-12-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/erlang/" itemprop="url" rel="index"><span itemprop="name">erlang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h2 id="centos-rpm安装erlang"><a href="#centos-rpm安装erlang" class="headerlink" title="centos rpm安装erlang"></a>centos rpm安装erlang</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install  build-essential openssl openssl-devel unixODBC unixODBC-devel  make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz</span><br><span class="line">sudo yum install unixODBC  unixODBC-devel wxBase  wxGTK SDL wxGTK-gl</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装erlang"><a href="#安装erlang" class="headerlink" title="安装erlang"></a>安装erlang</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -i esl-erlang_22.3.4.1-1_centos_6_amd64.rpm</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T11:55:46+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/install/" rel="tag"># install</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/12/23/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T10:56:10+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/12/23/install_erlang/" itemprop="url">
-            <span itemprop="name">install_erlang</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-06T21:56:10+08:00"
-              content="2020-12-06">
-          12-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/12/06/consul/" itemprop="url">
-            <span itemprop="name">consul</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-08-06T21:56:10+08:00"
-              content="2020-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/08/06/interview/" itemprop="url">
-            <span itemprop="name">面试记录</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-10T11:02:24+08:00"
-              content="2020-07-10">
-          07-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/07/10/NFActorPlugin/" itemprop="url">
-            <span itemprop="name">NFActorPlugin</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-08T09:31:59+08:00"
-              content="2020-07-08">
-          07-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/07/08/NFServer/" itemprop="url">
-            <span itemprop="name">NFServer</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-08T09:31:59+08:00"
-              content="2020-07-08">
-          07-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/07/08/phoenix-guide/" itemprop="url">
-            <span itemprop="name">phoenix-guide</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-18T23:08:10+08:00"
-              content="2020-06-18">
-          06-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/06/18/dead-lock/" itemprop="url">
-            <span itemprop="name">dead_lock</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-11T20:40:05+08:00"
-              content="2020-06-11">
-          06-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/blog/2020/06/11/select-count/" itemprop="url">
-            <span itemprop="name">mysql的select count(*) count(1) count(Id)区别</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        
 
 
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/12/06/consul/" rel="prev" title="consul">
+      <i class="fa fa-chevron-left"></i> consul
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/12/23/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTM4OC83OTUx"></div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -438,6 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#centos-rpm安装erlang"><span class="nav-number">1.</span> <span class="nav-text">centos rpm安装erlang</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖"><span class="nav-number">1.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装erlang"><span class="nav-number">1.2.</span> <span class="nav-text">安装erlang</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -557,6 +451,21 @@
 
   
 
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
 <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>

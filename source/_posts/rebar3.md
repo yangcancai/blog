@@ -18,6 +18,10 @@ categories:
 * vm.args.src
 * <APP_NAME>.app.src.script
 
+### Required
+
+* rebar 3.14.3 on Erlang/OTP 22 Erts 10.7.2.1
+
 ### Makefile文件
 
 ```shell

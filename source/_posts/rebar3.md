@@ -17,6 +17,7 @@ categories:
 * sys.config.src
 * vm.args.src
 * <APP_NAME>.app.src.script
+* hooks/pre_start.sh
 
 ### Required
 
@@ -353,6 +354,21 @@ Version = string:strip(string:strip(binary_to_list(VersionBin),both,$\n)),
 NewConfig = {application, Name, lists:keystore(vsn,1,L,{vsn, Version})},
 file:write_file("apps/<APP_NAME>/src/<APP_NAME>.app.src.gen", io_lib:format("%%% auto generate ~n~p", [NewConfig])),
 NewConfig.
+```
+
+### hooks/pre_start.sh
+
+```shell
+#!/bin/bash
+echo '<APP_NAME> start...... '
+OPEN_FILES_RECOMMENDED=24576
+OPEN_FILES_LIMIT=$(ulimit -n)
+## erlang crash.dump filename instead of start date 
+export ERL_CRASH_DUMP=$(date +<APP_NAME>-%Y%m%d_%H:%M:%S.dump)
+if [ "$OPEN_FILES_RECOMMENDED" -gt "$OPEN_FILES_LIMIT" ]; then
+    echo "WARNING: ulimit -n is $OPEN_FILES_LIMIT; $OPEN_FILES_RECOMMENDED is the recommended minimum."
+    echo "You are recommended to ensure the node is stopped and raise the maximum number of open files (try 'ulimit -n $OPEN_FILES_RECOMMENDED') before starting the node."
+fi
 ```
 
 ## 参考

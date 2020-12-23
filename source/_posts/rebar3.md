@@ -354,3 +354,7 @@ NewConfig = {application, Name, lists:keystore(vsn,1,L,{vsn, Version})},
 file:write_file("apps/<APP_NAME>/src/<APP_NAME>.app.src.gen", io_lib:format("%%% auto generate ~n~p", [NewConfig])),
 NewConfig.
 ```
+
+## 参考
+
+* [rebar3.org](http://rebar3.org/docs/deployment/releases/)

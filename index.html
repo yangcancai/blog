@@ -212,7 +212,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-12-23 16:54:48" itemprop="dateCreated datePublished" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+              <time title="创建时间：2020-12-23 16:56:48" itemprop="dateCreated datePublished" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
             </span>
 
           
@@ -283,7 +283,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-12-23 10:56:10 / 修改时间：16:54:48" itemprop="dateCreated datePublished" datetime="2020-12-23T10:56:10+08:00">2020-12-23</time>
+              <time title="创建时间：2020-12-23 10:56:10 / 修改时间：16:56:48" itemprop="dateCreated datePublished" datetime="2020-12-23T10:56:10+08:00">2020-12-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -352,7 +352,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-12-23 10:56:10 / 修改时间：16:54:48" itemprop="dateCreated datePublished" datetime="2020-12-23T10:56:10+08:00">2020-12-23</time>
+              <time title="创建时间：2020-12-23 10:56:10 / 修改时间：16:56:48" itemprop="dateCreated datePublished" datetime="2020-12-23T10:56:10+08:00">2020-12-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -404,6 +404,11 @@
 <h3 id="vm-args-src"><a href="#vm-args-src" class="headerlink" title="vm.args.src"></a>vm.args.src</h3><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-name $&#123;APP_PUSH_NODE_NAME&#125;</span><br><span class="line">-setcookie $&#123;APP_PUSH_COOKIE&#125;</span><br><span class="line">%% 是否启用的kernel的poll机制，默认为false</span><br><span class="line">+K true</span><br><span class="line">%% 异步线程池的线程数，范围为0~1024，默认为10</span><br><span class="line">+A30</span><br><span class="line">%% 最大进程数，范围为1024-134217727 ，默认为  262144</span><br><span class="line">+P 1000000</span><br><span class="line">%% 同时打开的端口数量限制（Open ports）</span><br><span class="line">+Q 100000</span><br></pre></td></tr></table></figure>
 
 <h3 id="app-src-script"><a href="#app-src-script" class="headerlink" title=".app.src.script"></a><APP_NAME>.app.src.script</h3><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[&#123;application, Name, L&#125;] = CONFIG,</span><br><span class="line">&#123;ok, VersionBin&#125; = file:read_file(&lt;&lt;<span class="string">"VERSION"</span>&gt;&gt;),</span><br><span class="line">Version = string:strip(string:strip(binary_to_list(VersionBin),both,$\n)),</span><br><span class="line">NewConfig = &#123;application, Name, lists:keystore(vsn,<span class="number">1</span>,L,&#123;vsn, Version&#125;)&#125;,</span><br><span class="line">file:write_file(<span class="string">"apps/&lt;APP_NAME&gt;/src/&lt;APP_NAME&gt;.app.src.gen"</span>, io_lib:format(<span class="string">"%%% auto generate ~n~p"</span>, [NewConfig])),</span><br><span class="line">NewConfig.</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://rebar3.org/docs/deployment/releases/" target="_blank" rel="noopener">rebar3.org</a></li>
+</ul>
+
       
     </div>
 
@@ -453,7 +458,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -542,7 +547,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -674,7 +679,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -774,7 +779,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -893,7 +898,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -966,7 +971,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1051,7 +1056,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 16:54:48" itemprop="dateModified" datetime="2020-12-23T16:54:48+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 16:56:48" itemprop="dateModified" datetime="2020-12-23T16:56:48+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">

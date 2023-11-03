@@ -1,0 +1,159 @@
+<mxfile host="Electron" modified="2023-08-07T08:38:38.057Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.4.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="SlmCOJVg68SK9RuTDlKb" version="21.4.0" type="device" pages="3">
+  <diagram name="echo" id="u0nFk9ajzU8YdCdiPXos">
+    <mxGraphModel dx="954" dy="727" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jul2Lb92vZjvEFnkFAvS-1" target="jul2Lb92vZjvEFnkFAvS-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="150" />
+              <mxPoint x="420" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-6" value="Hello world！\r\n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jul2Lb92vZjvEFnkFAvS-4">
+          <mxGeometry x="-0.1941" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-1" value="Client" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.608;entryY=0.988;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jul2Lb92vZjvEFnkFAvS-2" target="jul2Lb92vZjvEFnkFAvS-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-7" value="Hello world!\r\n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jul2Lb92vZjvEFnkFAvS-5">
+          <mxGeometry x="0.1045" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jul2Lb92vZjvEFnkFAvS-2" value="Server" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="160" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="vMOxtD8OyXsPhvIvMGFO" name="eproxy框架">
+    <mxGraphModel dx="954" dy="727" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="JliHdUPB75bK5WCbweYP-6" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-1" target="JliHdUPB75bK5WCbweYP-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-1" value="App" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="145" y="156" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.457;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-2" target="JliHdUPB75bK5WCbweYP-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-8" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-2" target="JliHdUPB75bK5WCbweYP-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-2" target="JliHdUPB75bK5WCbweYP-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-13" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-2" target="JliHdUPB75bK5WCbweYP-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-2" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-2" target="jLct7Q67KVfgyLTGEYoQ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-2" value="eproxy" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="394" y="150" width="120" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-3" value="动态配置启动的端口&lt;br&gt;对应的域名，端口转发到目标机器" style="ellipse;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="348" y="319" width="197" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-15" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.65;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="JliHdUPB75bK5WCbweYP-7" target="JliHdUPB75bK5WCbweYP-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-16" value="native code" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="JliHdUPB75bK5WCbweYP-15">
+          <mxGeometry x="-0.2035" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-7" value="根据域名实时产生一个ssl握手的证书" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="545" y="249" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-10" value="通道建立后对数据进行hooks，hooks的实现可以通过Web Ui编写代码实现" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="578" y="143" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-12" value="提供一个方法获取eproxy根证书的方法" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="422" y="31" width="104" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JliHdUPB75bK5WCbweYP-14" value="使用rust产生生成证书的方法" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="598" y="375" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-1" value="对请求和返回的数据实现订阅发布机制" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="161" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-7" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jLct7Q67KVfgyLTGEYoQ-3" target="jLct7Q67KVfgyLTGEYoQ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-3" value="eproxy数据" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="51" y="531" width="89" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-6" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jLct7Q67KVfgyLTGEYoQ-4" target="jLct7Q67KVfgyLTGEYoQ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jLct7Q67KVfgyLTGEYoQ-4" target="jLct7Q67KVfgyLTGEYoQ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-10" value="get" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jLct7Q67KVfgyLTGEYoQ-9">
+          <mxGeometry x="-0.3493" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-4" value="socket数据管理进程存储最新的200条会话" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="191" y="477" width="157" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-5" value="请求和返回的数据流" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="433" y="526" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-8" value="UI上线从数据管理进程获取数据，主要获取上线后的数据" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="235" y="639" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-13" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jLct7Q67KVfgyLTGEYoQ-11" target="jLct7Q67KVfgyLTGEYoQ-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-11" value="左边的socket切换" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="61" y="740" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jLct7Q67KVfgyLTGEYoQ-12" value="从socket管理进程获取已经存在的数据并订阅新生成的body数据" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="742" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="wm7am8boh5IMWn_8vXjh" name="数据处理流程图">
+    <mxGraphModel dx="954" dy="727" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lJmvmkMHCiuke2y5DLza-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="lJmvmkMHCiuke2y5DLza-3" target="lJmvmkMHCiuke2y5DLza-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-3" value="UI上线" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="85" y="47" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-8" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lJmvmkMHCiuke2y5DLza-4" target="lJmvmkMHCiuke2y5DLza-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-4" value="从管理进程获取上线后的会话数据" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="167" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-10" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lJmvmkMHCiuke2y5DLza-6" target="lJmvmkMHCiuke2y5DLza-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-6" value="UI切换会话" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="69" y="267" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lJmvmkMHCiuke2y5DLza-9" value="从管理进程获取某个会话的数据，并订阅当前会话" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="367" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

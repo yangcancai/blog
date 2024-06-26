@@ -1,0 +1,82 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "rDFS2EYz1qL0hz-GlvjrH",
+      "type": "rectangle",
+      "x": 282.8515625,
+      "y": 129.609375,
+      "width": 166.74688720703125,
+      "height": 38.450897216796875,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": {
+        "type": 3
+      },
+      "seed": 1352416969,
+      "version": 49,
+      "versionNonce": 263737511,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "ONumnNqUO5hQrlO_6Z3qo"
+        }
+      ],
+      "updated": 1711609948951,
+      "link": null,
+      "locked": false
+    },
+    {
+      "id": "ONumnNqUO5hQrlO_6Z3qo",
+      "type": "text",
+      "x": 349.31502532958984,
+      "y": 136.33482360839844,
+      "width": 33.81996154785156,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 706234185,
+      "version": 25,
+      "versionNonce": 768975815,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1711609948952,
+      "link": null,
+      "locked": false,
+      "text": "tpm",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "baseline": 18,
+      "containerId": "rDFS2EYz1qL0hz-GlvjrH",
+      "originalText": "tpm",
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

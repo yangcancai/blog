@@ -1,0 +1,350 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5" pages="2">
+  <diagram name="第 1 页" id="RWyXOE51hDHt50nKM5q8">
+    <mxGraphModel dx="1194" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-1" target="iJ60cUAGocxTelcwV2Dx-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-1" value="AppDelegate：：&lt;span style=&quot;background-color: rgb(31, 31, 36); color: rgb(65, 161, 192); font-family: Menlo;&quot;&gt;didFinishLaunchingWithOptions&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="310" y="210" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-2" value="启动" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="70" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.459;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-2" target="iJ60cUAGocxTelcwV2Dx-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-30" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-4" target="iJ60cUAGocxTelcwV2Dx-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-4" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 启动页 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;enterLaunchWaitController&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36); min-height: 14px;&quot; class=&quot;p2&quot;&gt;&lt;span class=&quot;s1&quot;&gt;/* xmpp建立连接和登录 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36); min-height: 14px;&quot; class=&quot;p2&quot;&gt;&lt;span class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: rgb(103, 183, 164);&quot;&gt;startLogin&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="310" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-10" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-6" target="iJ60cUAGocxTelcwV2Dx-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-11" value="XmppTools" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-10">
+          <mxGeometry x="-0.1059" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-6" value="&lt;p style=&quot;text-align: left; margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 连接xmpp */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left; margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[xmpp &lt;/span&gt;loginWithDelegate&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="460" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-13" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-9" target="iJ60cUAGocxTelcwV2Dx-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-48" value="XmppTools" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-13">
+          <mxGeometry x="0.0296" y="-2" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-9" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;loginWithDelegate&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="300" y="580" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-16" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-12" target="iJ60cUAGocxTelcwV2Dx-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-17" value="XmppTools.&lt;span style=&quot;text-wrap: wrap; background-color: rgb(31, 31, 36); color: rgb(65, 161, 192); font-family: Menlo; font-size: 12px; text-align: start;&quot;&gt;connectToHost&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-16">
+          <mxGeometry x="-0.5111" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-12" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;[&lt;/span&gt;_xmppStream&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;disconnect&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;span style=&quot;color: rgb(108, 121, 134);&quot; class=&quot;s2&quot;&gt;//断开服务器重新连接&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s3&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;connectToHost&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;span style=&quot;color: rgb(108, 121, 134);&quot; class=&quot;s2&quot;&gt;//连接到主机&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="720" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-14" value="AppDelegate" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="355" y="158" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-15" target="iJ60cUAGocxTelcwV2Dx-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-20" value="XMPPFramework.XMPPStream" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-19">
+          <mxGeometry x="0.0105" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-68" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-15" target="iJ60cUAGocxTelcwV2Dx-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-15" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;if&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s2&quot;&gt;(![&lt;/span&gt;_xmppStream connectWithTimeout&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: rgb(208, 191, 105);&quot; class=&quot;s3&quot;&gt;10&amp;nbsp;&lt;/span&gt;error&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s2&quot;&gt;:&amp;amp;error])&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="260" y="850" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-18" target="iJ60cUAGocxTelcwV2Dx-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-18" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;connectWithTimeout&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="360" y="980" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-24" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-21" target="iJ60cUAGocxTelcwV2Dx-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-25" value="XMPPStream" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-24">
+          <mxGeometry x="-0.1684" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-21" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;connectToHost&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&lt;/span&gt;hostName&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;onPort&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&lt;/span&gt;hostPort&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;withTimeout&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&lt;/span&gt;XMPPStreamTimeoutNone&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;error&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&amp;amp;connectErr];&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1088" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-63" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-23" target="iJ60cUAGocxTelcwV2Dx-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-64" value="创建超时定时器" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-63">
+          <mxGeometry x="-0.2643" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-23" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;BOOL&lt;/b&gt;&lt;/span&gt; result = [&lt;span style=&quot;color: rgb(103, 183, 164);&quot; class=&quot;s2&quot;&gt;asyncSocket&lt;/span&gt; &lt;span style=&quot;color: rgb(103, 183, 164);&quot; class=&quot;s2&quot;&gt;connectToHost&lt;/span&gt;:host &lt;span style=&quot;color: rgb(103, 183, 164);&quot; class=&quot;s2&quot;&gt;onPort&lt;/span&gt;:port &lt;span style=&quot;color: rgb(103, 183, 164);&quot; class=&quot;s2&quot;&gt;error&lt;/span&gt;:errPtr];&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1200" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-27" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.465;entryY=0.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-23" target="iJ60cUAGocxTelcwV2Dx-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-28" value="XMPPStream" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-27">
+          <mxGeometry x="-0.0827" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-62" value="回调" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-27">
+          <mxGeometry x="-0.5598" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-32" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-29" target="iJ60cUAGocxTelcwV2Dx-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-33" value="token存在" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-32">
+          <mxGeometry x="-0.2262" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-35" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-29" target="iJ60cUAGocxTelcwV2Dx-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-36" value="不存在" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-35">
+          <mxGeometry x="-0.02" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-29" value="是否存在token？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="360" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-38" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-34" target="iJ60cUAGocxTelcwV2Dx-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-39" value="&lt;span style=&quot;color: rgb(93, 216, 255); font-family: Menlo; font-size: 12px; text-align: start; text-wrap: wrap; background-color: rgb(31, 31, 36);&quot;&gt;UserAccountLoginController&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-38">
+          <mxGeometry x="0.05" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-34" value="本地没有曾经登录，&lt;br&gt;用户手动点击登录才触发xmpp连接" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-37" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* Mchat ID 登录处理入口 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;-(&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;IBAction&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)&lt;/span&gt;userAccountLogin&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:(&lt;/span&gt;&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s3&quot;&gt;UIButton&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; *)sender&lt;span class=&quot;Apple-converted-space&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="900" y="480" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-44" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-40" target="iJ60cUAGocxTelcwV2Dx-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-45" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Menlo; color: rgb(93, 216, 255); background-color: rgb(31, 31, 36); text-align: start; text-wrap: wrap;&quot; class=&quot;p1&quot;&gt;XmppTools&lt;/p&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-44">
+          <mxGeometry x="0.0303" y="1" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-40" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;-(&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt;)&lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;loginWithUserName&lt;/span&gt;:(&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s3&quot;&gt;NSString&lt;/span&gt; *)userName &lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;passWord&lt;/span&gt;:(&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s3&quot;&gt;NSString&lt;/span&gt; *)password &lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;complete&lt;/span&gt;:(&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt; (^)(&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;id&lt;/b&gt;&lt;/span&gt;))sucess&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="635" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-41" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.476;entryY=0.043;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-37" target="iJ60cUAGocxTelcwV2Dx-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-42" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: Menlo; color: rgb(93, 216, 255); background-color: rgb(31, 31, 36); text-align: start; text-wrap: wrap;&quot; class=&quot;p1&quot;&gt;BXLoginViewModel&lt;/p&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-41">
+          <mxGeometry x="0.0097" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-46" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-43" target="iJ60cUAGocxTelcwV2Dx-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-47" value="XmppTools.&lt;span style=&quot;background-color: rgb(31, 31, 36); color: rgb(65, 161, 192); font-family: Menlo; font-size: 12px; text-align: start; text-wrap: wrap;&quot;&gt;connectToHost&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-46">
+          <mxGeometry x="-0.1236" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-43" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;- (&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt;)&lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;login&lt;/span&gt;:(&lt;span style=&quot;color: rgb(158, 241, 221);&quot; class=&quot;s3&quot;&gt;XMPPResultBlock&lt;/span&gt;)xmppBlock&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="945" y="760" width="195" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-54" value="xmppqueue队列" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1042" width="690" height="548" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-66" value="超时回调" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="iJ60cUAGocxTelcwV2Dx-54" source="iJ60cUAGocxTelcwV2Dx-61" target="iJ60cUAGocxTelcwV2Dx-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-61" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;/* 10秒超时 */&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;startConnectTimeout&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="iJ60cUAGocxTelcwV2Dx-54">
+          <mxGeometry x="430" y="258" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-26" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgba(255, 255, 255, 0.85); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;- (&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s1&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt;)&lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;socket&lt;/span&gt;:(&lt;span style=&quot;color: rgb(158, 241, 221);&quot; class=&quot;s3&quot;&gt;GCDAsyncSocket&lt;/span&gt; *)sock &lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;didConnectToHost&lt;/span&gt;:(&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s4&quot;&gt;NSString&lt;/span&gt; *)host &lt;span style=&quot;color: rgb(65, 161, 192);&quot; class=&quot;s2&quot;&gt;port&lt;/span&gt;:(&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s4&quot;&gt;UInt16&lt;/span&gt;)port&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="iJ60cUAGocxTelcwV2Dx-54">
+          <mxGeometry x="40" y="298" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-65" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;doConnectTimeout&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="iJ60cUAGocxTelcwV2Dx-54">
+          <mxGeometry x="430" y="368" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-56" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-55" target="iJ60cUAGocxTelcwV2Dx-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-57" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-55" target="iJ60cUAGocxTelcwV2Dx-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-55" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="110" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-58" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;onContectTimeOut&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="860" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-59" value="main thread" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="530" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-67" value="True?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="850" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-70" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.025;entryY=0.617;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="iJ60cUAGocxTelcwV2Dx-67" target="iJ60cUAGocxTelcwV2Dx-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="iJ60cUAGocxTelcwV2Dx-71" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="iJ60cUAGocxTelcwV2Dx-70">
+          <mxGeometry x="0.0326" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="vwtr71JLFkB2P2DtHPkb" name="第 2 页">
+    <mxGraphModel dx="1194" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-4" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-1" target="GKQOjAoRuhIW8BOx5VnD-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-1" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgb(93, 216, 255);&quot;&gt;+XMPPReconnect.&lt;/span&gt;XMPPReconnectReachabilityCallback&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="110" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-2" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgb(93, 216, 255);&quot;&gt;XMPPReconnect.&lt;/span&gt;maybeAttemptReconnectWithReachabilityFlags&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="240" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-3" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[del &lt;/span&gt;xmppReconnect&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;shouldAttemptAutoReconnect&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:reachabilityFlags]&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="370" width="460" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.426;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-2" target="GKQOjAoRuhIW8BOx5VnD-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-6" target="GKQOjAoRuhIW8BOx5VnD-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-19" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-6" target="GKQOjAoRuhIW8BOx5VnD-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-20" value="start timer的逻辑" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKQOjAoRuhIW8BOx5VnD-19">
+          <mxGeometry x="0.0375" y="-3" relative="1" as="geometry">
+            <mxPoint x="1" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-6" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 这个函数会处理轮训服务器逻辑 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 同时会启动一个start Timer */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;XmppTools.(&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;BOOL&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)&lt;/span&gt;xmppReconnect&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:(&lt;/span&gt;&lt;span style=&quot;color: rgb(158, 241, 221);&quot; class=&quot;s3&quot;&gt;XMPPReconnect&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; *)sender &lt;/span&gt;shouldAttemptAutoReconnect&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:(&lt;/span&gt;&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s4&quot;&gt;SCNetworkConnectionFlags&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)connectionFlags&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="185" y="510" width="410" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-7" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.473;entryY=0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-3" target="GKQOjAoRuhIW8BOx5VnD-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-11" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-8" target="GKQOjAoRuhIW8BOx5VnD-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-8" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 清除旧的定时器，生成新的定时器 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;xmppReconnect.(&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)&lt;/span&gt;resSetupReconnectTimerWithTimerInterval&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;:(&lt;/span&gt;&lt;span style=&quot;color: rgb(208, 168, 255);&quot; class=&quot;s3&quot;&gt;NSTimeInterval&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)interval&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="640" width="490" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-12" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-13" target="GKQOjAoRuhIW8BOx5VnD-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="890" />
+              <mxPoint x="50" y="890" />
+              <mxPoint x="50" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-15" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKQOjAoRuhIW8BOx5VnD-12">
+          <mxGeometry x="-0.0239" y="-13" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-14" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-10" target="GKQOjAoRuhIW8BOx5VnD-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-10" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;maybeAttemptReconnect&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="780" width="335" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-16" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-13" target="GKQOjAoRuhIW8BOx5VnD-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-17" value="NO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKQOjAoRuhIW8BOx5VnD-16">
+          <mxGeometry x="0.1785" y="14" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-13" value="网络是否可达？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="900" width="98" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GKQOjAoRuhIW8BOx5VnD-18" target="GKQOjAoRuhIW8BOx5VnD-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-23" value="执行连接" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GKQOjAoRuhIW8BOx5VnD-22">
+          <mxGeometry x="-0.1163" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-18" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;/* 10秒后回调在当前线程执行 */&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;XmppTools.(&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;void&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;)&lt;/span&gt;onContectTimeOut&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="460" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GKQOjAoRuhIW8BOx5VnD-21" value="XmppTools.connectToHost" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="720" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-9" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8PGeheNdRmaByL3WAG8W-1" target="8PGeheNdRmaByL3WAG8W-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-1" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;XmppTools.manualStartXMPPConnect&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="170" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-11" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8PGeheNdRmaByL3WAG8W-2" target="8PGeheNdRmaByL3WAG8W-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-2" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(65, 161, 192); background-color: rgb(31, 31, 36); text-align: start;&quot; class=&quot;p1&quot;&gt;setupReconnectTimer&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="380" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-4" value="与主机断开连接" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-5" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.446;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8PGeheNdRmaByL3WAG8W-4" target="8PGeheNdRmaByL3WAG8W-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-7" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="1" source="8PGeheNdRmaByL3WAG8W-2" target="GKQOjAoRuhIW8BOx5VnD-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="802.76" y="378.02" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-10" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8PGeheNdRmaByL3WAG8W-8" target="8PGeheNdRmaByL3WAG8W-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-12" value="manualStart" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8PGeheNdRmaByL3WAG8W-10">
+          <mxGeometry x="-0.0857" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8PGeheNdRmaByL3WAG8W-8" value="&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;stopTimer&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgb(103, 183, 164);&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;.&lt;/span&gt;reconnect&lt;/span&gt;&lt;font color=&quot;rgba(255, 255, 255, 0.85)&quot;&gt; &lt;/font&gt;&lt;font color=&quot;#67b7a4&quot;&gt;manualStart&lt;/font&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-stretch: normal; line-height: normal; font-family: Menlo; color: rgb(103, 183, 164); background-color: rgb(31, 31, 36);&quot; class=&quot;p1&quot;&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;[&lt;/span&gt;&lt;span style=&quot;color: rgb(252, 95, 163);&quot; class=&quot;s2&quot;&gt;&lt;b&gt;self&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt; &lt;/span&gt;startTimer&lt;span style=&quot;color: rgba(255, 255, 255, 0.85);&quot; class=&quot;s1&quot;&gt;];&lt;/span&gt;&lt;/p&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="670" y="250" width="240" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -42,7 +42,7 @@ $ cat ~/.fwknoprc
 [myssh]
 SPA_SERVER_PROTO            udp
 SPA_SERVER_PORT             62201
-ALLOW_IP                    23.154.152.214
+ALLOW_IP                    192.168.163.5
 ACCESS                      tcp/2194
 SPA_SERVER                  127.0.0.1
 KEY_BASE64                  e7USwx6Ik5LU4f3s0sBA9C5vB0y/UeQpdbDAcjT5+EY=

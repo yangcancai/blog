@@ -20,11 +20,22 @@ make
 make install
 ```
 ### 问题
-> doc/Makefile.am:1: error: option 'info-in-builddir' not recognized, 注释 :
+> 1. doc/Makefile.am:1: error: option 'info-in-builddir' not recognized, 注释 :
 ```shell
  -AUTOMAKE_OPTIONS    = info-in-builddir
  +#AUTOMAKE_OPTIONS    = info-in-builddir`
  ```
+### 外网无法访问62201
+1. 使用tcpdump验证数据包到达目标机器： `tcpdump -i eth0 udp port 62201`
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+07:00:30.340096 IP x.x.x.x.54914 > C20240909202534.62201: UDP, length 225
+2. 防火墙记录丢弃的数据包: `iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 4`
+3. 查看系统日志发现数据包被丢弃了: `tail -f /var/log/messages`
+  Nov 26 06:52:26 C20240909202534 kernel: IPTables-Dropped: IN=eth0 OUT= MAC=12:bf:fc:00:02:53:ac:75:1d:80:2c:94:08:00 SRC=x.x.x.x DST=x.x.x.x LEN=253 TOS=0x00 PREC=0x00 TTL=53 ID=26683 PROTO=UDP SPT=57822 DPT=62201 LEN=233
+4. 查看log的编号: `iptables -nvL --line-numbers`  
+5. 在log的前面开放62201: `iptables -I INPUT 8 -p udp --dport 62201 -j ACCEPT`
+
 ### 在docker中测试
 ```shell
 $ docker run --privileged -it centos:7 /bin/bash
@@ -42,9 +53,10 @@ $ cat ~/.fwknoprc
 [myssh]
 SPA_SERVER_PROTO            udp
 SPA_SERVER_PORT             62201
-ALLOW_IP                    192.168.163.5
+ALLOW_IP                    192.168.163.1
 ACCESS                      tcp/2194
-SPA_SERVER                  127.0.0.1
+# 修改这个ip
+SPA_SERVER                  myssh
 KEY_BASE64                  e7USwx6Ik5LU4f3s0sBA9C5vB0y/UeQpdbDAcjT5+EY=
 HMAC_KEY_BASE64             pVRDi5qu6IYT34RVQn7JNXI0ETnxVldxC+kZxMcGhjK7gF7MYTRSdDDWrJHh8IfTO4NY2zNQ6sCI6DFFSr93QA==
 USE_HMAC                    Y
@@ -75,13 +87,27 @@ $
 ```shell
 # 后端启动
 $ fwknopd -U -a server/access.conf
+# 关闭
+$ fwknopd -K
 # 前端启动
-$ fwknopd -f -U -a server/access.conf
+$ [root@C20240909202534 fwknop]# fwknopd -f -U -a server/access.conf
+Warning: REQUIRE_SOURCE_ADDRESS not enabled for access stanza source: 'ANY'
+Starting fwknopd
+Added jump rule from chain: INPUT to chain: FWKNOP_INPUT
+iptables 'comment' match is available
+Kicking off UDP server to listen on port 62201.
+
+
+(stanza #1) SPA Packet from IP: x.x.x.x received with access source match
+
 ```
 
 ### 测试
 ```shell
-[root@a04f87bf9fab fwknop]# fwknop -n myssh -v
+# 服务器抓包62201
+$ tcpdump -i eth0 udp port 62201
+# 敲门
+$ fwknop -n myssh -v
 SPA Field Values:
 =================
    Random Value: 5470884611265449

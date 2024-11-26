@@ -6,7 +6,7 @@ categories:
 - fwknop
 ---
 
-## fwknop
+## fwknop-2.6.11
 ### 安装
 ```shell
 git clone https://github.com/mrash/fwknop.git
@@ -60,6 +60,8 @@ SPA_SERVER                  myssh
 KEY_BASE64                  e7USwx6Ik5LU4f3s0sBA9C5vB0y/UeQpdbDAcjT5+EY=
 HMAC_KEY_BASE64             pVRDi5qu6IYT34RVQn7JNXI0ETnxVldxC+kZxMcGhjK7gF7MYTRSdDDWrJHh8IfTO4NY2zNQ6sCI6DFFSr93QA==
 USE_HMAC                    Y
+# 增加用户名
+SPOOF_USER                  who
 $ cat server/access.conf
 .....
 #### fwknopd access.conf stanzas ###
@@ -69,7 +71,7 @@ OPEN_PORTS          tcp/4022,tcp/2194,tcp/443,tcp/22000,tcp/5432
 KEY_BASE64                  e7USwx6Ik5LU4f3s0sBA9C5vB0y/UeQpdbDAcjT5+EY=
 HMAC_KEY_BASE64             pVRDi5qu6IYT34RVQn7JNXI0ETnxVldxC+kZxMcGhjK7gF7MYTRSdDDWrJHh8IfTO4NY2zNQ6sCI6DFFSr93QA==
 REQUIRE_SOURCE_ADDRESS       Y
-#PCAP_INTF                   eth0;
+REQUIRE_USERNAME             who
 # If you want to use GnuPG keys then define the following variables
 #
 #GPG_HOME_DIR           /homedir/path/.gnupg
@@ -111,7 +113,7 @@ $ fwknop -n myssh -v
 SPA Field Values:
 =================
    Random Value: 5470884611265449
-       Username: root
+       Username: who
       Timestamp: 1732601087
     FKO Version: 3.0.0
    Message Type: 1 (Access msg)
